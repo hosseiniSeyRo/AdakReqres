@@ -103,6 +103,14 @@ class UserListFragment : Fragment() {
 
         })
 
+        binding.swipeRefresh?.setOnRefreshListener {
+            currentPage = 1
+            getAllUsers(currentPage)
+
+            // Notify swipeRefreshLayout that the refresh has finished
+            binding.swipeRefresh.isRefreshing = false
+        }
+
         return binding.root
     }
 
@@ -136,6 +144,12 @@ class UserListFragment : Fragment() {
 
     /* consume earthquakeList response */
     private fun consumeAllUsersResponse(response: ResponseWrapper<UserResponse>, page: Int) {
+        // remove rv data for swipeRefreshing time
+        if (binding.swipeRefresh.isRefreshing) {
+            userList?.clear()
+            userAdapter.removeAllData()
+        }
+
         Log.wtf(TAG, "response.status= " + response.status)
         isLoading = false
 
