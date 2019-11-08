@@ -21,5 +21,12 @@
         <argument
             android:name="user"
             app:argType="com.rhosseini.adakreqres.model.webService.model.model.User" />
+        <action
+            android:id="@+id/action_userDetails_to_addUser"
+            app:destination="@id/addUserFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/addUserFragment"
+        android:name="com.rhosseini.adakreqres.view.fragment.AddUserFragment"
+        android:label="AddUserFragment" />
 </navigation>

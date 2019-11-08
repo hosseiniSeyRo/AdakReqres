@@ -4,5 +4,7 @@
     <string name="hello_blank_fragment">user list fragment</string>
 
     <string name="noResultsFound">No results found</string>
+    <string name="hint_name">name</string>
+    <string name="hint_job">job</string>
 
 </resources>

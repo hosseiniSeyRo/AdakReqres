@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 
 import com.rhosseini.adakreqres.R
@@ -52,7 +53,9 @@ class UserDetailsFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.actionEdit -> Toast.makeText(activity, "edit", Toast.LENGTH_SHORT).show()
+            R.id.actionEdit -> findNavController().navigate(
+                UserDetailsFragmentDirections.actionUserDetailsToAddUser()
+            )
             R.id.actionDelete -> deleteUser(safeArgs.user.id, item)
         }
         return super.onOptionsItemSelected(item)
