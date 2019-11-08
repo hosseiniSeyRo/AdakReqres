@@ -25,6 +25,7 @@ import com.rhosseini.adakreqres.model.webService.model.model.UserResponse
 import com.rhosseini.adakreqres.view.adapter.BaseAdapter
 import com.rhosseini.adakreqres.view.adapter.UserAdapter
 import com.rhosseini.adakreqres.viewModel.UserListViewModel
+import java.util.*
 
 
 class UserListFragment : Fragment() {
@@ -37,6 +38,8 @@ class UserListFragment : Fragment() {
     private lateinit var loadingLayout: View
     private lateinit var emptyLayout: View
     private var currentPage = 1
+    private var hasNextPage = false
+    private var isLoading = false
     //    private var viewModel by lazy { ViewModelProvider(this).get(UserListViewModel::class.java) }
     private lateinit var viewModel: UserListViewModel
 
@@ -85,6 +88,21 @@ class UserListFragment : Fragment() {
 
         initViews()
 
+        /* Handle pagination */
+        rvUser.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE && !isLoading) {
+                    if (hasNextPage) {
+                        currentPage += 1
+                        getAllUsers(currentPage)
+                    }
+                }
+            }
+
+        })
+
         return binding.root
     }
 
@@ -116,8 +134,10 @@ class UserListFragment : Fragment() {
         })
     }
 
+    /* consume earthquakeList response */
     private fun consumeAllUsersResponse(response: ResponseWrapper<UserResponse>, page: Int) {
         Log.wtf(TAG, "response.status= " + response.status)
+        isLoading = false
 
         when (response.status) {
             Status.LOADING -> {
@@ -130,6 +150,8 @@ class UserListFragment : Fragment() {
                 }
             }
             Status.SUCCESS -> {
+                hasNextPage = response.data?.totalPages != page
+
                 userList = response.data!!.userList as MutableList<User>
                 userAdapter.addData(userList)
 
@@ -164,10 +186,9 @@ class UserListFragment : Fragment() {
                         " " + response.error.message,
                         Toast.LENGTH_SHORT
                     ).show()
-                    Log.e(Constraints.TAG, "" + response.error.message)
+                    Log.e(Constraints.TAG, Objects.requireNonNull(response.error.message))
                 }
             }
         }
     }
-
 }
