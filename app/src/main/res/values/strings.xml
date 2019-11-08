@@ -2,4 +2,7 @@
     <string name="app_name">AdakReqres</string>
 
     <string name="hello_blank_fragment">user list fragment</string>
+
+    <string name="noResultsFound">No results found</string>
+
 </resources>
