@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.rhosseini.adakreqres.model.webService.ReqresService;
 import com.rhosseini.adakreqres.model.webService.RetrofitClient;
+import com.rhosseini.adakreqres.model.webService.model.model.AddNewUserResponse;
 import com.rhosseini.adakreqres.model.webService.model.model.ResponseWrapper;
 import com.rhosseini.adakreqres.model.webService.model.model.UserResponse;
 
@@ -79,6 +80,34 @@ public class ReqresRepository {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
+                responseWrapper.setValue(ResponseWrapper.error(t));
+            }
+        });
+
+        return responseWrapper;
+    }
+
+    /* add new User */
+    public MutableLiveData<ResponseWrapper<AddNewUserResponse>> addNewUser(String name, String job) {
+        MutableLiveData<ResponseWrapper<AddNewUserResponse>> responseWrapper = new MutableLiveData<>();
+
+        // set loading status
+        responseWrapper.setValue(ResponseWrapper.loading());
+
+        // add user
+        reqresService.addNewUser(name, job).enqueue(new Callback<AddNewUserResponse>() {
+            @Override
+            public void onResponse(@NotNull Call<AddNewUserResponse> call, @NotNull Response<AddNewUserResponse> response) {
+                if (response.isSuccessful()) {
+                    // set response value
+                    responseWrapper.setValue(ResponseWrapper.success(response.body()));
+                } else {
+                    responseWrapper.setValue(ResponseWrapper.error(new Throwable(response.message())));
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<AddNewUserResponse> call, @NotNull Throwable t) {
                 responseWrapper.setValue(ResponseWrapper.error(t));
             }
         });
