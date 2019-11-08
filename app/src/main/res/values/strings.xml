@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">AdakReqres</string>
 
-    <string name="hello_blank_fragment">user list fragment</string>
+    <string name="pageTitleAddUser">Add User</string>
+    <string name="pageTitleUserDetail">User Detail</string>
+    <string name="pageTitleUserList">User List</string>
+    <string name="pageTitleUpdateUser">Update User</string>
 
     <string name="noResultsFound">No results found</string>
     <string name="hint_name">name</string>

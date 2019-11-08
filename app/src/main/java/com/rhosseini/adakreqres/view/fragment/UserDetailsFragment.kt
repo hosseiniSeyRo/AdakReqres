@@ -38,6 +38,9 @@ class UserDetailsFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_user_details, container, false)
         binding.lifecycleOwner = this
 
+        // set title
+        activity?.title = getString(R.string.pageTitleUserDetail)
+
         /* init viewModel */
         viewModel = ViewModelProviders.of(this).get(UserDetailViewModel::class.java)
 

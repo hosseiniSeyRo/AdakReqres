@@ -41,7 +41,13 @@ class AddUserFragment : Fragment() {
         binding.lifecycleOwner = this
 
         if (safeArgs.user != null) {
+            // set title
+            activity?.title = getString(R.string.pageTitleUpdateUser)
+
             binding.etName.setText(safeArgs.user?.first_name)
+        } else {
+            // set title
+            activity?.title = getString(R.string.pageTitleAddUser)
         }
 
         return binding.root
