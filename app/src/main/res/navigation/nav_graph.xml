@@ -9,7 +9,7 @@
         android:id="@+id/userListFragment"
         android:name="com.rhosseini.adakreqres.view.fragment.UserListFragment"
         android:label="fragment_user_list"
-        tools:layout="@layout/fragment_user_list" >
+        tools:layout="@layout/fragment_user_list">
         <action
             android:id="@+id/action_userList_to_userDetails"
             app:destination="@id/userDetailsFragment" />
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/userDetailsFragment"
         android:name="com.rhosseini.adakreqres.view.fragment.UserDetailsFragment"
-        android:label="UserDetailsFragment" >
+        android:label="UserDetailsFragment">
         <argument
             android:name="user"
             app:argType="com.rhosseini.adakreqres.model.webService.model.model.User" />
@@ -28,5 +28,9 @@
     <fragment
         android:id="@+id/addUserFragment"
         android:name="com.rhosseini.adakreqres.view.fragment.AddUserFragment"
-        android:label="AddUserFragment" />
+        android:label="AddUserFragment">
+        <argument
+            android:name="user"
+            app:argType="com.rhosseini.adakreqres.model.webService.model.model.User" />
+    </fragment>
 </navigation>

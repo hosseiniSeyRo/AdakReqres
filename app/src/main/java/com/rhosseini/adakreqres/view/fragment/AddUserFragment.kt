@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.rhosseini.adakreqres.R
 import com.rhosseini.adakreqres.databinding.FragmentAddUserBinding
 
@@ -12,6 +13,8 @@ import com.rhosseini.adakreqres.databinding.FragmentAddUserBinding
 class AddUserFragment : Fragment() {
 
     private lateinit var binding: FragmentAddUserBinding
+    private val safeArgs: AddUserFragmentArgs by navArgs()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,6 +23,8 @@ class AddUserFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_user, container, false)
         binding.lifecycleOwner = this
+
+        binding.etName.setText(safeArgs.user?.first_name)
 
         return binding.root
     }

@@ -54,7 +54,9 @@ class UserDetailsFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.actionEdit -> findNavController().navigate(
-                UserDetailsFragmentDirections.actionUserDetailsToAddUser()
+                UserDetailsFragmentDirections.actionUserDetailsToAddUser(
+                    safeArgs.user
+                )
             )
             R.id.actionDelete -> deleteUser(safeArgs.user.id, item)
         }
