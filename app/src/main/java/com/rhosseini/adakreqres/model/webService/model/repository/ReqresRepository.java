@@ -58,4 +58,31 @@ public class ReqresRepository {
         });
     }
 
+    /* delete user */
+    public MutableLiveData<ResponseWrapper<Void>> deleteUser(int userId) {
+        MutableLiveData<ResponseWrapper<Void>> responseWrapper = new MutableLiveData<>();
+
+        // set loading status
+        responseWrapper.setValue(ResponseWrapper.loading());
+
+        // delete user
+        reqresService.deleteUser(userId).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.isSuccessful()) {
+                    // set response value
+                    responseWrapper.setValue(ResponseWrapper.success(response.body()));
+                } else {
+                    responseWrapper.setValue(ResponseWrapper.error(new Throwable(response.message())));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                responseWrapper.setValue(ResponseWrapper.error(t));
+            }
+        });
+
+        return responseWrapper;
+    }
 }

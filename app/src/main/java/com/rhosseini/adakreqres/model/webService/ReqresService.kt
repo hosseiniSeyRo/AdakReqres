@@ -9,4 +9,7 @@ interface ReqresService {
 
     @GET("/api/users")
     fun getAllUser(@Query("page") page: Int): Call<UserResponse>
+
+    @DELETE("/api/users/{id}")
+    fun deleteUser(@Path("id") userId: Int): Call<Void>
 }
