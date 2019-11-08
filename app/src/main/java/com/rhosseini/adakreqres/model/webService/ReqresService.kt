@@ -2,6 +2,7 @@ package com.rhosseini.adakreqres.model.webService
 
 
 import com.rhosseini.adakreqres.model.webService.model.model.AddNewUserResponse
+import com.rhosseini.adakreqres.model.webService.model.model.UpdateUserResponse
 import com.rhosseini.adakreqres.model.webService.model.model.UserResponse
 import retrofit2.Call
 import retrofit2.http.*
@@ -18,4 +19,6 @@ interface ReqresService {
     @FormUrlEncoded
     fun addNewUser(@Field("name") name: String, @Field("job") job: String): Call<AddNewUserResponse>
 
+    @PUT("/api/users/{id}")
+    fun updateUser(@Path("id") id: Int, @Body user: UpdateUserResponse): Call<UpdateUserResponse>
 }

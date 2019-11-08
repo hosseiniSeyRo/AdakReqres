@@ -7,6 +7,7 @@ import com.rhosseini.adakreqres.model.webService.ReqresService;
 import com.rhosseini.adakreqres.model.webService.RetrofitClient;
 import com.rhosseini.adakreqres.model.webService.model.model.AddNewUserResponse;
 import com.rhosseini.adakreqres.model.webService.model.model.ResponseWrapper;
+import com.rhosseini.adakreqres.model.webService.model.model.UpdateUserResponse;
 import com.rhosseini.adakreqres.model.webService.model.model.UserResponse;
 
 import org.jetbrains.annotations.NotNull;
@@ -108,6 +109,34 @@ public class ReqresRepository {
 
             @Override
             public void onFailure(@NotNull Call<AddNewUserResponse> call, @NotNull Throwable t) {
+                responseWrapper.setValue(ResponseWrapper.error(t));
+            }
+        });
+
+        return responseWrapper;
+    }
+
+    /* add new User */
+    public MutableLiveData<ResponseWrapper<UpdateUserResponse>> updateUser(int id, UpdateUserResponse user) {
+        MutableLiveData<ResponseWrapper<UpdateUserResponse>> responseWrapper = new MutableLiveData<>();
+
+        // set loading status
+        responseWrapper.setValue(ResponseWrapper.loading());
+
+        // add user
+        reqresService.updateUser(id, user).enqueue(new Callback<UpdateUserResponse>() {
+            @Override
+            public void onResponse(Call<UpdateUserResponse> call, Response<UpdateUserResponse> response) {
+                if (response.isSuccessful()) {
+                    // set response value
+                    responseWrapper.setValue(ResponseWrapper.success(response.body()));
+                } else {
+                    responseWrapper.setValue(ResponseWrapper.error(new Throwable(response.message())));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UpdateUserResponse> call, Throwable t) {
                 responseWrapper.setValue(ResponseWrapper.error(t));
             }
         });

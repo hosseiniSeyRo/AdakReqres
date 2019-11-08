@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rhosseini.adakreqres.model.webService.model.model.AddNewUserResponse
 import com.rhosseini.adakreqres.model.webService.model.model.ResponseWrapper
+import com.rhosseini.adakreqres.model.webService.model.model.UpdateUserResponse
 import com.rhosseini.adakreqres.model.webService.model.repository.ReqresRepository
 
 class AddUserViewModel : ViewModel() {
@@ -20,5 +21,9 @@ class AddUserViewModel : ViewModel() {
 
     fun addNewUser(name: String, job: String): MutableLiveData<ResponseWrapper<AddNewUserResponse>> {
         return repository.addNewUser(name, job)
+    }
+
+    fun updateUser(id: Int, user: UpdateUserResponse): MutableLiveData<ResponseWrapper<UpdateUserResponse>> {
+        return repository.updateUser(id, user)
     }
 }

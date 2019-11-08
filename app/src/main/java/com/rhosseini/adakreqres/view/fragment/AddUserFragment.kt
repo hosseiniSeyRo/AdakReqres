@@ -14,6 +14,7 @@ import com.rhosseini.adakreqres.databinding.FragmentAddUserBinding
 import com.rhosseini.adakreqres.model.webService.model.model.AddNewUserResponse
 import com.rhosseini.adakreqres.model.webService.model.model.ResponseWrapper
 import com.rhosseini.adakreqres.model.webService.model.model.ResponseWrapper.Status
+import com.rhosseini.adakreqres.model.webService.model.model.UpdateUserResponse
 import com.rhosseini.adakreqres.viewModel.AddUserViewModel
 
 
@@ -40,7 +41,7 @@ class AddUserFragment : Fragment() {
         binding.lifecycleOwner = this
 
         if (safeArgs.user != null) {
-            binding.etName.setText(safeArgs.user!!.first_name)
+            binding.etName.setText(safeArgs.user?.first_name)
         }
 
         return binding.root
@@ -72,7 +73,14 @@ class AddUserFragment : Fragment() {
             viewModel.addNewUser(name, job).observe(this, Observer { response ->
                 consumeAddUserResponse(response, item)
             })
+        } else { // update user
+            val id = safeArgs.user!!.id
+            val user = UpdateUserResponse(name, job)
+            viewModel.updateUser(id, user).observe(this, Observer { response ->
+                consumeUpdateUserResponse(response, item)
+            })
         }
+
     }
 
     private fun consumeAddUserResponse(
@@ -83,8 +91,7 @@ class AddUserFragment : Fragment() {
             Status.LOADING -> item.setIcon(R.drawable.ic_refresh)
             Status.SUCCESS -> {
                 item.setIcon(R.drawable.ic_save)
-                Toast.makeText(activity, "add user by id: " + response.data?.id, Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(activity, "add user by id: "+ response.data?.id, Toast.LENGTH_SHORT).show()
                 activity?.onBackPressed()
             }
             Status.ERROR -> {
@@ -94,4 +101,21 @@ class AddUserFragment : Fragment() {
         }
     }
 
+    private fun consumeUpdateUserResponse(
+        response: ResponseWrapper<UpdateUserResponse>,
+        item: MenuItem
+    ) {
+        when (response.status) {
+            Status.LOADING -> item.setIcon(R.drawable.ic_refresh)
+            Status.SUCCESS -> {
+                item.setIcon(R.drawable.ic_save)
+                Toast.makeText(activity, "update user by name: "+ response.data?.name, Toast.LENGTH_SHORT).show()
+                activity?.onBackPressed()
+            }
+            Status.ERROR -> {
+                item.setIcon(R.drawable.ic_save)
+                Toast.makeText(activity, "error: " + response.error, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 }
