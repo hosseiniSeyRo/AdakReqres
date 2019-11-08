@@ -1,4 +1,4 @@
-package com.rhosseini.adakreqres.model.webService.model
+package com.rhosseini.adakreqres.model.webService.model.model
 
 
 data class User(

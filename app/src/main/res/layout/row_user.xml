@@ -8,7 +8,7 @@
 
         <variable
             name="obj"
-            type="com.rhosseini.adakreqres.model.webService.model.User" />
+            type="com.rhosseini.adakreqres.model.webService.model.model.User" />
     </data>
 
     <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
