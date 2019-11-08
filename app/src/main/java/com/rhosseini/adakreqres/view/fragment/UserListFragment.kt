@@ -18,10 +18,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rhosseini.adakreqres.R
 import com.rhosseini.adakreqres.databinding.FragmentUserListBinding
-import com.rhosseini.adakreqres.model.webService.model.model.ResponseWrapper
-import com.rhosseini.adakreqres.model.webService.model.model.ResponseWrapper.Status
-import com.rhosseini.adakreqres.model.webService.model.model.User
-import com.rhosseini.adakreqres.model.webService.model.model.UserResponse
+import com.rhosseini.adakreqres.model.webService.model.ResponseWrapper
+import com.rhosseini.adakreqres.model.webService.model.ResponseWrapper.Status
+import com.rhosseini.adakreqres.model.webService.model.User
+import com.rhosseini.adakreqres.model.webService.model.UserResponse
 import com.rhosseini.adakreqres.view.adapter.BaseAdapter
 import com.rhosseini.adakreqres.view.adapter.UserAdapter
 import com.rhosseini.adakreqres.viewModel.UserListViewModel

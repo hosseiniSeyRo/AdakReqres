@@ -1,9 +1,9 @@
 package com.rhosseini.adakreqres.model.webService
 
 
-import com.rhosseini.adakreqres.model.webService.model.model.AddNewUserResponse
-import com.rhosseini.adakreqres.model.webService.model.model.UpdateUserResponse
-import com.rhosseini.adakreqres.model.webService.model.model.UserResponse
+import com.rhosseini.adakreqres.model.webService.model.AddNewUserResponse
+import com.rhosseini.adakreqres.model.webService.model.UpdateUserResponse
+import com.rhosseini.adakreqres.model.webService.model.UserResponse
 import retrofit2.Call
 import retrofit2.http.*
 

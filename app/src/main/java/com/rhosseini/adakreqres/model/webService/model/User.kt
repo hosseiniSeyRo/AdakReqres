@@ -1,4 +1,4 @@
-package com.rhosseini.adakreqres.model.webService.model.model
+package com.rhosseini.adakreqres.model.webService.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

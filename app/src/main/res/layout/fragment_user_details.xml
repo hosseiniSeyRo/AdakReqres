@@ -8,7 +8,7 @@
 
         <variable
             name="user"
-            type="com.rhosseini.adakreqres.model.webService.model.model.User" />
+            type="com.rhosseini.adakreqres.model.webService.model.User" />
     </data>
 
     <ScrollView

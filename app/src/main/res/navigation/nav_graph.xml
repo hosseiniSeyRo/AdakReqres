@@ -32,7 +32,7 @@
         tools:layout="@layout/fragment_user_details" >
         <argument
             android:name="user"
-            app:argType="com.rhosseini.adakreqres.model.webService.model.model.User" />
+            app:argType="com.rhosseini.adakreqres.model.webService.model.User" />
         <action
             android:id="@+id/action_userDetails_to_addUser"
             app:destination="@id/addUserFragment"
@@ -48,7 +48,7 @@
         tools:layout="@layout/fragment_add_user">
         <argument
             android:name="user"
-            app:argType="com.rhosseini.adakreqres.model.webService.model.model.User"
+            app:argType="com.rhosseini.adakreqres.model.webService.model.User"
             app:nullable="true" />
     </fragment>
 </navigation>

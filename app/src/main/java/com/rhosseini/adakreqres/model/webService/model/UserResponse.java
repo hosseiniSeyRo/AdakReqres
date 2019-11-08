@@ -1,4 +1,4 @@
-package com.rhosseini.adakreqres.model.webService.model.model;
+package com.rhosseini.adakreqres.model.webService.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

@@ -1,14 +1,14 @@
-package com.rhosseini.adakreqres.model.webService.model.repository;
+package com.rhosseini.adakreqres.model.repository;
 
 
 import androidx.lifecycle.MutableLiveData;
 
 import com.rhosseini.adakreqres.model.webService.ReqresService;
 import com.rhosseini.adakreqres.model.webService.RetrofitClient;
-import com.rhosseini.adakreqres.model.webService.model.model.AddNewUserResponse;
-import com.rhosseini.adakreqres.model.webService.model.model.ResponseWrapper;
-import com.rhosseini.adakreqres.model.webService.model.model.UpdateUserResponse;
-import com.rhosseini.adakreqres.model.webService.model.model.UserResponse;
+import com.rhosseini.adakreqres.model.webService.model.AddNewUserResponse;
+import com.rhosseini.adakreqres.model.webService.model.UpdateUserResponse;
+import com.rhosseini.adakreqres.model.webService.model.UserResponse;
+import com.rhosseini.adakreqres.model.webService.model.ResponseWrapper;
 
 import org.jetbrains.annotations.NotNull;
 

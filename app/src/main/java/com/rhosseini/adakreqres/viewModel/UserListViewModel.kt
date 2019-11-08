@@ -2,9 +2,9 @@ package com.rhosseini.adakreqres.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.rhosseini.adakreqres.model.webService.model.model.ResponseWrapper
-import com.rhosseini.adakreqres.model.webService.model.model.UserResponse
-import com.rhosseini.adakreqres.model.webService.model.repository.ReqresRepository
+import com.rhosseini.adakreqres.model.webService.model.ResponseWrapper
+import com.rhosseini.adakreqres.model.webService.model.UserResponse
+import com.rhosseini.adakreqres.model.repository.ReqresRepository
 
 class UserListViewModel: ViewModel() {
 

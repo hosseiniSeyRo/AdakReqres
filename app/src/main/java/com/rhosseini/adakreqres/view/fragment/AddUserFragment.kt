@@ -11,10 +11,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.navArgs
 import com.rhosseini.adakreqres.R
 import com.rhosseini.adakreqres.databinding.FragmentAddUserBinding
-import com.rhosseini.adakreqres.model.webService.model.model.AddNewUserResponse
-import com.rhosseini.adakreqres.model.webService.model.model.ResponseWrapper
-import com.rhosseini.adakreqres.model.webService.model.model.ResponseWrapper.Status
-import com.rhosseini.adakreqres.model.webService.model.model.UpdateUserResponse
+import com.rhosseini.adakreqres.model.webService.model.AddNewUserResponse
+import com.rhosseini.adakreqres.model.webService.model.ResponseWrapper
+import com.rhosseini.adakreqres.model.webService.model.ResponseWrapper.Status
+import com.rhosseini.adakreqres.model.webService.model.UpdateUserResponse
 import com.rhosseini.adakreqres.viewModel.AddUserViewModel
 
 

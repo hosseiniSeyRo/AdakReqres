@@ -1,9 +1,9 @@
-package com.rhosseini.adakreqres.model.webService.model.model;
+package com.rhosseini.adakreqres.model.webService.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AddNewUserResponse {
+public class UpdateUserResponse {
 
     @SerializedName("name")
     @Expose
@@ -13,13 +13,14 @@ public class AddNewUserResponse {
     @Expose
     private String job;
 
-    @SerializedName("id")
+    @SerializedName("updatedAt")
     @Expose
-    private int id;
+    private String updatedAt;
 
-    @SerializedName("createdAt")
-    @Expose
-    private String createdAt;
+    public UpdateUserResponse(String name, String job) {
+        this.name = name;
+        this.job = job;
+    }
 
     public String getName() {
         return name;
@@ -37,20 +38,12 @@ public class AddNewUserResponse {
         this.job = job;
     }
 
-    public int getId() {
-        return id;
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
+    public void setUpdatedAt(String updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
 }

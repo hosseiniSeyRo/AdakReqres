@@ -1,4 +1,4 @@
-package com.rhosseini.adakreqres.model.webService.model.model
+package com.rhosseini.adakreqres.model.webService.model
 
 /**
  * A generic class that holds a value with its loading status.

@@ -2,7 +2,7 @@ package com.rhosseini.adakreqres.view.adapter
 
 
 import com.rhosseini.adakreqres.R
-import com.rhosseini.adakreqres.model.webService.model.model.User
+import com.rhosseini.adakreqres.model.webService.model.User
 
 class UserAdapter(itemClickListener: OnItemClickListener<User>) :
     BaseAdapter<User>(itemClickListener) {
