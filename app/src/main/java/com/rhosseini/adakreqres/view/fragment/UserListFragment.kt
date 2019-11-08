@@ -205,10 +205,10 @@ class UserListFragment : Fragment() {
                 if (response.error != null) {
                     Toast.makeText(
                         activity,
-                        " " + response.error.message,
+                        getString(R.string.message_errorFetchData),
                         Toast.LENGTH_SHORT
                     ).show()
-                    Log.e(Constraints.TAG, Objects.requireNonNull(response.error.message))
+                    Log.e(TAG, response.error.message)
                 }
             }
         }
