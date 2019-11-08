@@ -38,8 +38,12 @@ class UserListFragment : Fragment() {
     private lateinit var loadingLayout: View
     private lateinit var emptyLayout: View
     private var currentPage = 1
+    // for load more
     private var hasNextPage = false
     private var isLoading = false
+    private val visibleThreshold = 1
+    private var lastVisibleItem: Int = 0
+    private var totalItemCount: Int = 0
     //    private var viewModel by lazy { ViewModelProvider(this).get(UserListViewModel::class.java) }
     private lateinit var viewModel: UserListViewModel
 
@@ -88,21 +92,6 @@ class UserListFragment : Fragment() {
 
         initViews()
 
-        /* Handle pagination */
-        rvUser.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-
-                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE && !isLoading) {
-                    if (hasNextPage) {
-                        currentPage += 1
-                        getAllUsers(currentPage)
-                    }
-                }
-            }
-
-        })
-
         binding.swipeRefresh?.setOnRefreshListener {
             currentPage = 1
             getAllUsers(currentPage)
@@ -127,9 +116,29 @@ class UserListFragment : Fragment() {
 
     private fun initUserRecyclerView() {
         rvUser = binding.rvUser
-        rvUser.layoutManager = GridLayoutManager(activity, 2)
+        val rvLayoutManager = GridLayoutManager(activity, 2)
+        rvUser.layoutManager = rvLayoutManager
 
         rvUser.adapter = userAdapter
+
+        /* Handle pagination */
+        rvUser.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+
+                totalItemCount = rvLayoutManager.itemCount
+                lastVisibleItem = rvLayoutManager.findLastVisibleItemPosition()
+
+                if (!isLoading && totalItemCount <= lastVisibleItem + visibleThreshold) { // end of recyclerView (Considering the Threshold)
+                    if (hasNextPage) {
+                        isLoading = true
+                        currentPage += 1
+                        getAllUsers(currentPage)
+                        isLoading = false
+                    }
+                }
+            }
+        })
     }
 
     private fun getAllUsers(page: Int) {
@@ -151,7 +160,6 @@ class UserListFragment : Fragment() {
         }
 
         Log.wtf(TAG, "response.status= " + response.status)
-        isLoading = false
 
         when (response.status) {
             Status.LOADING -> {
