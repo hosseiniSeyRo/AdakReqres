@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rhosseini.adakreqres.R
@@ -27,7 +28,7 @@ import com.rhosseini.adakreqres.viewModel.UserListViewModel
 
 class UserListFragment : Fragment() {
 
-    private val TAG = "rHosseini"+UserListFragment::getTag
+    private val TAG = "rHosseini" + UserListFragment::getTag
     private lateinit var binding: FragmentUserListBinding
     private lateinit var userAdapter: UserAdapter
     private lateinit var rvUser: RecyclerView
@@ -51,8 +52,9 @@ class UserListFragment : Fragment() {
         userAdapter = UserAdapter(object : BaseAdapter.OnItemClickListener<User> {
             override fun onItemClick(item: User) {
                 Log.wtf(TAG, "userId= " + item.id)
-                Toast.makeText(activity, "" + item.first_name, Toast.LENGTH_SHORT).show()
-                //TODO go to detail page
+                findNavController().navigate(
+                    UserListFragmentDirections.actionUserListToUserDetails(item)
+                )
             }
         })
 

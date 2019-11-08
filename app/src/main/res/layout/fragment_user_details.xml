@@ -4,6 +4,13 @@
     xmlns:bind="http://schemas.android.com/tools"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="user"
+            type="com.rhosseini.adakreqres.model.webService.model.model.User" />
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -32,8 +39,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:src="@drawable/placeholder"
-                    tools:layout_editor_absoluteX="1dp" />
+                    bind:imageUrl="@{user.avatar}"
+                    bind:placeHolder="@{@drawable/placeholder}"
+                    tools:layout_editor_absoluteX="1dp"
+                    tools:src="@drawable/placeholder" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
@@ -48,7 +57,7 @@
                     style="@style/userDetail_userName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="userName"
+                    android:text="@{user.first_name + ' ' + user.last_name}"
                     android:textAlignment="center" />
 
                 <TextView
@@ -56,7 +65,7 @@
                     style="@style/userDetail_userEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="userEmail"
+                    android:text="@{user.email}"
                     android:textAlignment="center" />
 
             </LinearLayout>
