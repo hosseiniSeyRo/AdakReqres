@@ -1,6 +1,7 @@
 package com.rhosseini.adakreqres.view.fragment
 
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -73,6 +74,7 @@ class UserListFragment : Fragment() {
         // set title
         activity?.title = getString(R.string.pageTitleUserList)
 
+        binding.fab.setColorFilter(Color.WHITE)
         binding.fab.setOnClickListener {
             val action = UserListFragmentDirections.actionUserListToAddUser(null)
             findNavController().navigate(action)
