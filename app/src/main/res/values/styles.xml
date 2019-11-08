@@ -8,6 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="MyToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="MyToolbarStyle" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="cardView_userName">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="cardView_userEmail">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 
 </resources>
