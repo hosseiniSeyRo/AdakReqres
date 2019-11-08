@@ -2,6 +2,7 @@ package com.rhosseini.adakreqres.view.fragment
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -20,6 +21,7 @@ import com.rhosseini.adakreqres.viewModel.AddUserViewModel
 
 class AddUserFragment : Fragment() {
 
+    private val TAG = "rHosseini" + AddUserFragment::getTag
     private lateinit var binding: FragmentAddUserBinding
     private val safeArgs: AddUserFragmentArgs by navArgs()
     private lateinit var viewModel: AddUserViewModel
@@ -67,7 +69,7 @@ class AddUserFragment : Fragment() {
                 if (viewModel.validationInputs(name, job)) {
                     save(name, job, item)
                 } else {
-                    Toast.makeText(activity, "! validate inputs", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, getString(R.string.message_userUpdateValidationInputs), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -97,12 +99,13 @@ class AddUserFragment : Fragment() {
             Status.LOADING -> item.setIcon(R.drawable.ic_refresh)
             Status.SUCCESS -> {
                 item.setIcon(R.drawable.ic_save)
-                Toast.makeText(activity, "add user by id: "+ response.data?.id, Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.message_userAdded) + response.data?.id, Toast.LENGTH_SHORT).show()
                 activity?.onBackPressed()
             }
             Status.ERROR -> {
                 item.setIcon(R.drawable.ic_save)
-                Toast.makeText(activity, "error: " + response.error, Toast.LENGTH_SHORT).show()
+                Log.wtf(TAG, "error: " + response.error)
+                Toast.makeText(activity, getString(R.string.message_errorAddUser), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -115,12 +118,13 @@ class AddUserFragment : Fragment() {
             Status.LOADING -> item.setIcon(R.drawable.ic_refresh)
             Status.SUCCESS -> {
                 item.setIcon(R.drawable.ic_save)
-                Toast.makeText(activity, "update user by name: "+ response.data?.name, Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.message_userUpdated)+ response.data?.name, Toast.LENGTH_SHORT).show()
                 activity?.onBackPressed()
             }
             Status.ERROR -> {
                 item.setIcon(R.drawable.ic_save)
-                Toast.makeText(activity, "error: " + response.error, Toast.LENGTH_SHORT).show()
+                Log.wtf(TAG, "error: " + response.error)
+                Toast.makeText(activity, getString(R.string.message_errorUpdateUser), Toast.LENGTH_SHORT).show()
             }
         }
     }

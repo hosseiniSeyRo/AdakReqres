@@ -7,7 +7,15 @@
     <string name="pageTitleUpdateUser">Update User</string>
 
     <string name="noResultsFound">No results found</string>
+
     <string name="hint_name">name</string>
     <string name="hint_job">job</string>
+
+    <string name="message_deleteUser">user deleted</string>
+    <string name="message_userUpdateValidationInputs">Please enter all items</string>
+    <string name="message_errorAddUser">An error has occurred, please try again</string>
+    <string name="message_errorUpdateUser">An error has occurred, please try again</string>
+    <string name="message_userAdded">add user by id:</string>
+    <string name="message_userUpdated">update user by name:</string>
 
 </resources>

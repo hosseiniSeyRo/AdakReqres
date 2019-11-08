@@ -80,7 +80,7 @@ class UserDetailsFragment : Fragment() {
             Status.LOADING -> item.setIcon(R.drawable.ic_refresh)
             Status.SUCCESS -> {
                 item.setIcon(R.drawable.ic_delete)
-                Toast.makeText(activity, "delete", Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.message_deleteUser), Toast.LENGTH_SHORT).show()
                 activity?.onBackPressed()
             }
             Status.ERROR -> {
