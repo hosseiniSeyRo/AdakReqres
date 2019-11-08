@@ -70,6 +70,11 @@ class UserListFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_list, container, false)
         binding.lifecycleOwner = this
 
+        binding.fab.setOnClickListener {
+            val action = UserListFragmentDirections.actionUserListToAddUser(null)
+            findNavController().navigate(action)
+        }
+
         /* init recyclerView */
         initUserRecyclerView()
 

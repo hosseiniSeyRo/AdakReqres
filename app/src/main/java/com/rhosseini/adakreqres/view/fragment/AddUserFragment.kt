@@ -29,7 +29,9 @@ class AddUserFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_user, container, false)
         binding.lifecycleOwner = this
 
-        binding.etName.setText(safeArgs.user?.first_name)
+        if (safeArgs.user != null) {
+            binding.etName.setText(safeArgs.user!!.first_name)
+        }
 
         return binding.root
     }
