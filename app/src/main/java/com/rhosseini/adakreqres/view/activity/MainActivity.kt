@@ -1,7 +1,8 @@
-package com.rhosseini.adakreqres
+package com.rhosseini.adakreqres.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.rhosseini.adakreqres.R
 
 class MainActivity : AppCompatActivity() {
 
